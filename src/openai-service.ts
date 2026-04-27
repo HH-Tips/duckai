@@ -543,8 +543,8 @@ Please follow these instructions when responding to the following user message.`
     });
   }
 
-  getModels(): ModelsResponse {
-    const models = this.duckAI.getAvailableModels();
+  async getModels(): Promise<ModelsResponse> {
+    const models = await this.duckAI.getAvailableModels();
     const created = this.getCurrentTimestamp();
 
     const modelData: Model[] = models.map((modelId) => ({

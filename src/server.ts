@@ -29,7 +29,7 @@ const server = Bun.serve({
 
       // Models endpoint
       if (url.pathname === "/v1/models" && req.method === "GET") {
-        const models = openAIService.getModels();
+        const models = await openAIService.getModels();
         return new Response(JSON.stringify(models), {
           headers: { "Content-Type": "application/json", ...corsHeaders },
         });
