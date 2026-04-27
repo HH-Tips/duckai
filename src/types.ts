@@ -40,6 +40,7 @@ export type ToolChoice =
 export interface ChatCompletionRequest {
   model: string;
   messages: ChatCompletionMessage[];
+  reasoning_effort: string;
   temperature?: number;
   max_tokens?: number;
   stream?: boolean;
@@ -109,4 +110,5 @@ export interface VQDResponse {
 export interface DuckAIRequest {
   model: string;
   messages: ChatCompletionMessage[];
+  reasoningEffort: string;
 }

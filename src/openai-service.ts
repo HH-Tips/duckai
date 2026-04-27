@@ -78,6 +78,7 @@ export class OpenAIService {
     return {
       model,
       messages: request.messages,
+      reasoningEffort: request.reasoning_effort
     };
   }
 

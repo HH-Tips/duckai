@@ -1,5 +1,5 @@
 # Build stage - install dependencies and prepare source
-FROM oven/bun:1.2.14-alpine AS build
+FROM docker.io/oven/bun:1.2.14-alpine AS build
 
 WORKDIR /app
 
@@ -17,9 +17,9 @@ FROM oven/bun:1.2.14-alpine AS production
 
 # Install essential runtime dependencies
 RUN apk add --no-cache \
-    ca-certificates \
-    curl \
-    && rm -rf /var/cache/apk/*
+  ca-certificates \
+  curl \
+  && rm -rf /var/cache/apk/*
 
 # The bun user already exists in the base image, so we'll use it
 
@@ -31,7 +31,7 @@ COPY package.json bun.lock* ./
 
 # Install only production dependencies
 RUN bun install --frozen-lockfile --production && \
-    bun pm cache rm
+  bun pm cache rm
 
 # Copy source code from build stage
 COPY --from=build --chown=bun:bun /app/src ./src
